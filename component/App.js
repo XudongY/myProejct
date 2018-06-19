@@ -10,9 +10,13 @@ import {createStackNavigator} from 'react-navigation'
 import styles from '../style/style';
 import Register from './Register';
 import Login from './Login'
+import Home from  './Home'
 const RootStack = createStackNavigator(
   {
-    Home: {
+    Home:{
+      screen: Home
+    },
+    Login: {
       screen: Login,
     },
     Details: {
