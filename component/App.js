@@ -1,20 +1,21 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- * @flow
+ * @flow 
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Text,View,Button} from 'react-native';
 import {createStackNavigator} from 'react-navigation'
 import styles from '../style/style';
-import Register from './Register';
-import Login from './Login'
-import Home from  './Home'
+import Register from './Login/Register';
+import Login from './Login/Login';
+import Home from  './Home';
+
 const RootStack = createStackNavigator(
   {
     Home:{
-      screen: Home
+      screen: Home,
     },
     Login: {
       screen: Login,
@@ -36,7 +37,7 @@ const RootStack = createStackNavigator(
   }
 );
 
-export default class myProject extends React.Component {
+export default class myProject extends React.Component<{}> {
   render() {
     return <RootStack />;
   }

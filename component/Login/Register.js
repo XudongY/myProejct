@@ -1,11 +1,19 @@
+/**
+ * @flow
+ */
+import type {NavigationScreenProp} from 'react-navigation';
+
+import styles from '../../style/style';
 import React, { Component } from 'react';
-import { Text,View,Button} from 'react-native';
-import {createStackNavigator} from 'react-navigation'
-import styles from '../style/style';
+import { Button,Text,View} from 'react-native';
 
+type Props = {
+  navigation: NavigationScreenProp<State>
+}
+type State = {}
 
-export default class DetailsScreen extends React.Component {
-  static navigationOptions = ({ navigation, navigationOptions }) => {
+export default class DetailsScreen extends React.Component<Props> {
+  static navigationOptions = ({ navigation, navigationOptions }:any) => {
     console.log(navigationOptions);
     const {params} = navigation.state;
 
@@ -30,9 +38,13 @@ export default class DetailsScreen extends React.Component {
         <Text>other Param: {JSON.stringify(this.props.navigation.getParam('otherParma', 'ddddd'))}</Text>
         <Button
           title="Go to Details... again"
-          onPress={() => this.props.navigation.push('Details',{
-            itemId: Math.floor(Math.random() * 100),
-          })}
+          onPress={() =>  {
+            const push =  this.props.navigation.push;
+            push && push('Details',{
+               itemId: Math.floor(Math.random() * 100),
+            });
+         }
+        }
         />
         <Button
          title="Update the title"
